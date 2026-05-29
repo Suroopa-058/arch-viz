@@ -1,0 +1,300 @@
+/* IllamViz — Premium Typography */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Tenor+Sans&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── IllamViz Design Tokens ────────────────────────── */
+:root {
+  /* Brand colors */
+  --illam-primary:     #c8692a;
+  --illam-primary-lt:  #e8b688;
+  --illam-primary-dim: rgba(200,105,42,0.15);
+  --illam-cream:       #fdf7ed;
+  --illam-cream-dim:   rgba(253,247,237,0.65);
+  --illam-cream-ghost: rgba(253,247,237,0.08);
+  --illam-dark:        #140c07;
+  --illam-darker:      #0e0703;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sub:     'Tenor Sans', 'DM Sans', sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-label:   'Barlow Condensed', 'DM Sans', sans-serif;
+
+  /* Shadows */
+  --shadow-warm-sm: 0 4px 16px rgba(200,105,42,0.2);
+  --shadow-warm-lg: 0 12px 48px rgba(200,105,42,0.25);
+  --shadow-dark:    0 24px 80px rgba(10,5,2,0.7);
+
+  /* Surfaces */
+  --glass-bg:     rgba(253,247,237,0.05);
+  --glass-border: rgba(253,247,237,0.1);
+  --glass-hover:  rgba(200,105,42,0.12);
+   /* existing tokens... */
+
+  /* ── Typography color scale ──────────────────────── */
+  --text-primary:   #2c1a0e;   /* espresso — main headings   */
+  --text-secondary: #4a2e18;   /* dark walnut — subheadings  */
+  --text-body:      #5c3d22;   /* warm cocoa — body text     */
+  --text-muted:     #7a5538;   /* muted brown — labels       */
+  --text-ghost:     #9a7055;   /* soft sienna — hints        */
+  --text-accent:    #c8692a;   /* terracotta — highlights    */
+  --text-accent-lt: #d4845a;   /* light terra — hover        */
+
+  /* ── Nav specific ────────────────────────────────── */
+  --nav-default:    #5c3d22;
+  --nav-hover:      #2c1a0e;
+  --nav-active:     #c8692a;
+
+  /* ── Underline animation ─────────────────────────── */
+  --underline-color: #c8692a;
+}
+
+/* ── Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  background: #ddd4c2;
+  font-family: var(--font-body);
+  color: var(--illam-cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Typography Scale ──────────────────────────────── */
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.type-sub {
+  font-family: var(--font-sub);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+.type-label {
+  font-family: var(--font-label);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.type-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* ── Gradient text ─────────────────────────────────── */
+.text-gradient-warm {
+  background: linear-gradient(135deg, var(--illam-cream) 0%, var(--illam-primary-lt) 60%, var(--illam-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-terracotta {
+  background: linear-gradient(135deg, #e8b688 0%, #c8692a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass surface ─────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+.glass-warm {
+  background: rgba(200,105,42,0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(200,105,42,0.2);
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+.btn-illam {
+  font-family: var(--font-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.btn-illam-primary {
+  background: var(--illam-primary);
+  color: var(--illam-cream);
+}
+.btn-illam-primary:hover {
+  background: var(--illam-primary-lt);
+  color: var(--illam-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-warm-lg);
+}
+.btn-illam-ghost {
+  background: transparent;
+  color: var(--illam-cream);
+  border: 1px solid var(--glass-border) !important;
+}
+.btn-illam-ghost:hover {
+  background: var(--glass-hover);
+  border-color: rgba(200,105,42,0.35) !important;
+  transform: translateY(-2px);
+}
+
+/* ── Canvas ────────────────────────────────────────── */
+.canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ── Animations ────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1;   }
+}
+
+.anim-1 { animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.2s both; }
+.anim-2 { animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.4s both; }
+.anim-3 { animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.6s both; }
+.anim-4 { animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.8s both; }
+.anim-fade { animation: fadeIn 1.4s ease 0.5s both; }
+
+/* ── Divider line ──────────────────────────────────── */
+.line-warm {
+  width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--illam-primary), transparent);
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--illam-dark); }
+::-webkit-scrollbar-thumb { background: var(--illam-primary); border-radius: 2px; }
+/* ── Refined type utilities ───────────────────────── */
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+.type-sub {
+  font-family: var(--font-sub);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.type-label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.type-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: var(--text-body);
+}
+
+/* ── Nav link with animated underline ────────────── */
+.nav-link {
+  position: relative;
+  background: none;
+  border: none;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nav-default);
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--underline-color);
+  transition: width 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.nav-link:hover {
+  color: var(--nav-hover);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Stat value ──────────────────────────────────── */
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-family: var(--font-label);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--text-ghost);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* ── Tag pill ────────────────────────────────────── */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(200,105,42,0.1);
+  border: 1px solid rgba(200,105,42,0.25);
+  border-radius: 20px;
+  padding: 0.28rem 0.85rem;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+/* ── Scroll hint text ────────────────────────────── */
+.hint-text {
+  font-family: var(--font-label);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+}
